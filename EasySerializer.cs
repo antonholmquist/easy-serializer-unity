@@ -34,14 +34,14 @@ using System.Reflection;
 
 public class EasySerializer {
 			
-	public static void SerializeObjectToFile(Object o, string filePath) {
+	public static void SerializeObjectToFile(object serializableObject, string filePath) {
 		EasySerializer.SetEnvironmentVariables();
 
 		Stream stream = File.Open(filePath, FileMode.Create);
 
 		BinaryFormatter formatter = new BinaryFormatter();
 		formatter.Binder = new VersionDeserializationBinder();
-		formatter.Serialize(stream, o);
+		formatter.Serialize(stream, serializableObject);
 
 		stream.Close();
 
@@ -56,7 +56,7 @@ public class EasySerializer {
 		try {
 			stream = File.Open(filePath, FileMode.Open);
 		} 
-		
+
 		catch(FileNotFoundException e) {
 			return null;
 		}
