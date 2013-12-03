@@ -1,6 +1,6 @@
 # Easy Serializer for Unity
 
-This project aims to make object serialization in Unity as simple as possible while supporting all platforms.
+This project aims to make object serialization in Unity as simple as possible while supporting all platforms. 
 
 ## Platform Support
 
@@ -39,9 +39,15 @@ In case you didn't already know, a persistent file path can be aquired in Unity 
 string filePath = Application.persistentDataPath + '/object.data';
 ```
 
-## Further Information
+## Protip: iOS JIT Exception Fix
 
-Object serializing in Unity can be surprisingly awkward. The `BinaryFormatter` class requires a `VersionDeserializationBinder` instance, and even after that, it breaks on iOS due to `ExecutionEngineException: Attempting to JIT compile method 'List 1__TypeMetadata:.ctor ()' while running with --aot-only.`.
+Standard object serializing in Unity on iOS devices breaks with this exception:  `ExecutionEngineException: Attempting to JIT compile method 'List 1__TypeMetadata:.ctor ()' while running with --aot-only.`.
+
+To avoid this in your own code, add this line before doing any serialization it should work:
+
+```
+Environment.SetEnvironmentVariable("MONO_REFLECTION_SERIALIZER", "yes");
+```
 
 ## Links
 
