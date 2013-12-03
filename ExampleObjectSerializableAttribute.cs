@@ -29,12 +29,13 @@
  * Example of a class that will be automatically serialized.
  */
 
-using System.Runtime.Serialization;
+using System;
 
 [System.SerializableAttribute()]
 
 public class ExampleObjectSerializableAttribute {
-	
+
+	// Field's that are automatically serialized.
 	public string m_text_1;
 	public string m_text_2;
 

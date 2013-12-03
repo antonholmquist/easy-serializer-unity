@@ -29,6 +29,7 @@
  * Example of a class that will be serialized with fine-grained control. 
  */
 
+using System;
 using System.Runtime.Serialization;
 
 [Serializable ()]
