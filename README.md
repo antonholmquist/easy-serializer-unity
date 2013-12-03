@@ -6,7 +6,6 @@ This project aims to make object serialization in Unity as simple as possible wh
 
 PC/Mac/Linux standalones, iOS, Android.
 
-
 ## Usage
 
 **Serialize object to file**
@@ -15,13 +14,13 @@ PC/Mac/Linux standalones, iOS, Android.
 EasySerializer.SerializeObjectToFile(anObject, filePath);
 ```
 
-**Deserialize object to file**
+**Deserialize object from file**
 
 ```
 Object anObject = EasySerializer.DeserializeObjectFromFile(filePath);
 ```
 
-## Unity Peristent File Path
+## Unity Persistent File Path
 
 In case you didn't already know, a persistent file path can be aquired in Unity like this:
 
@@ -35,8 +34,8 @@ Object serializing in Unity can be surprisingly awkward. The `BinaryFormatter` c
 
 ## Links
 
-http://answers.unity3d.com/questions/8480/how-to-scrip-a-saveload-game-option.html
-http://answers.unity3d.com/questions/30930/why-did-my-binaryserialzer-stop-working.html?sort=oldest
+- http://answers.unity3d.com/questions/8480/how-to-scrip-a-saveload-game-option.html
+- http://answers.unity3d.com/questions/30930/why-did-my-binaryserialzer-stop-working.html?sort=oldest
 
 ## Author
 
