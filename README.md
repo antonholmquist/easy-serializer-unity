@@ -8,10 +8,21 @@ PC/Mac/Linux standalones, iOS, Android.
 
 ## Usage
 
+### Preparing the object for serialization
+
+First, you need to make sure that the class you want to serialize adheres to one of the two following:
+
+1. If you want the class to be automatically serialized, marked it with the **SerializableAttribute** as in `ExampleObjectSerializableAttribute.cs`.
+
+2. If you want the class to have fine-grained control of its serialization process, implement the **ISerializable** interface as in `ExampleObjectISerializable.cs`.
+
+### Serialization / Deserialization
+
+
 **Serialize object to file**
 
 ```
-EasySerializer.SerializeObjectToFile(anObject, filePath);
+EasySerializer.SerializeObjectToFile(serializableObject, filePath);
 ```
 
 **Deserialize object from file**
