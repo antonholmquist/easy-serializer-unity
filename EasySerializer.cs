@@ -47,6 +47,11 @@ public class EasySerializer {
 
 	public static object DeserializeObjectFromFile(string filePath) {
 
+		if (!File.Exists(filePath)) {
+			return null;
+		}
+
+
 		EasySerializer.SetEnvironmentVariables();
 
 		Stream stream = null;
