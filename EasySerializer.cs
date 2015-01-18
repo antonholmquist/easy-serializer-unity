@@ -32,6 +32,30 @@ using System.Reflection;
 
 public class EasySerializer {
 
+	public static byte[] SerializeObjectToBytes(object serializableObject) {
+		EasySerializer.SetEnvironmentVariables();
+
+		MemoryStream stream = new MemoryStream();
+
+		BinaryFormatter formatter = new BinaryFormatter();
+		formatter.Binder = new VersionDeserializationBinder();
+		formatter.Serialize(stream, serializableObject);
+
+		return stream.GetBuffer ();
+
+	}
+
+	public static object DeserializeObjectFromBytes(byte[] data) {
+
+		EasySerializer.SetEnvironmentVariables();
+
+		MemoryStream stream = new MemoryStream (data);
+
+		BinaryFormatter formatter = new BinaryFormatter();
+		formatter.Binder = new VersionDeserializationBinder();
+		return formatter.Deserialize(stream);
+	}
+
 	public static void SerializeObjectToFile(object serializableObject, string filePath) {
 		EasySerializer.SetEnvironmentVariables();
 
