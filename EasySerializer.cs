@@ -11,10 +11,10 @@
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- * 
+ *
  * The above copyright notice and this permission notice shall be included in
  * all copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -31,7 +31,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.Reflection;
 
 public class EasySerializer {
-			
+
 	public static void SerializeObjectToFile(object serializableObject, string filePath) {
 		EasySerializer.SetEnvironmentVariables();
 
@@ -55,15 +55,15 @@ public class EasySerializer {
 		EasySerializer.SetEnvironmentVariables();
 
 		Stream stream = null;
-		
+
 		try {
 			stream = File.Open(filePath, FileMode.Open);
-		} 
+		}
 
 		catch(FileNotFoundException e) {
 			return null;
 		}
-		
+
 		BinaryFormatter formatter = new BinaryFormatter();
 		formatter.Binder = new VersionDeserializationBinder();
 		object o = formatter.Deserialize(stream);
@@ -88,22 +88,22 @@ public class EasySerializer {
  * Suggested by TowerOfBricks:
  * http://answers.unity3d.com/questions/8480/how-to-scrip-a-saveload-game-option.html
  * */
-public sealed class VersionDeserializationBinder : SerializationBinder 
-{ 
+public sealed class VersionDeserializationBinder : SerializationBinder
+{
 	public override Type BindToType( string assemblyName, string typeName )
-	{ 
-		if ( !string.IsNullOrEmpty( assemblyName ) && !string.IsNullOrEmpty( typeName ) ) 
-		{ 
-			Type typeToDeserialize = null; 
-			
-			assemblyName = Assembly.GetExecutingAssembly().FullName; 
-			
-			// The following line of code returns the type. 
-			typeToDeserialize = Type.GetType( String.Format( "{0}, {1}", typeName, assemblyName ) ); 
-			
-			return typeToDeserialize; 
-		} 
-		
-		return null; 
-	} 
+	{
+		if ( !string.IsNullOrEmpty( assemblyName ) && !string.IsNullOrEmpty( typeName ) )
+		{
+			Type typeToDeserialize = null;
+
+			assemblyName = Assembly.GetExecutingAssembly().FullName;
+
+			// The following line of code returns the type.
+			typeToDeserialize = Type.GetType( String.Format( "{0}, {1}", typeName, assemblyName ) );
+
+			return typeToDeserialize;
+		}
+
+		return null;
+	}
 }
